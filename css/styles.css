@@ -14,19 +14,19 @@ body{
   height:40vh;
   overflow: scroll;
 }
-.row-q{
+.row-a{
   height:50vh;
   overflow: hidden;
 }
-.row-q .col{
+.row-a .col{
   height: 60px;
   background-color: #e9eaea;
   color:#3e3e40;
 }
-.row-q .col,.row-f .col{
+.row-a .col,.row-f .col{
   padding: 0;
 }
-.row-q .col a{
+.row-a .col a{
   display:block;
   color:inherit;
   text-decoration: none;
@@ -34,7 +34,16 @@ body{
   width:100%;
   padding-top: 20px;
   padding-bottom: 20px;
+
+  -webkit-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
+.row-a .col a:hover{
+background-color: #bebfc1;
+
+}
+
 .row-f{
   height:10vh;
   color:#e9eaea;
@@ -64,8 +73,16 @@ body{
     border-radius: 0;
     padding: .375rem 1rem;
     line-height: 1.5;
-    -webkit-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
+.btn:hover{
+  border-color: transparent;
+}
+
 .n-a{
 cursor: not-allowed;}
+
+
+}
