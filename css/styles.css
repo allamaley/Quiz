@@ -18,7 +18,7 @@ body{
   height:50vh;
   overflow: hidden;
 }
-.row-a .col{
+.row-a .col label{
   height: 60px;
   background-color: #e9eaea;
   color:#3e3e40;
@@ -26,7 +26,11 @@ body{
 .row-a .col,.row-f .col{
   padding: 0;
 }
-.row-a .col a{
+input[type="radio"] {
+    display:none;
+}
+.row-a .col label{
+  cursor: pointer;
   display:block;
   color:inherit;
   text-decoration: none;
@@ -39,7 +43,7 @@ body{
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-.row-a .col a:hover{
+.row-a label:hover{
 background-color: #bebfc1;
 
 }

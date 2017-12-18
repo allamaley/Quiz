@@ -32,7 +32,7 @@ $(document).ready(function () {
     $(this).find(".quizMessage").hide();
 
     // On clicking next, display the next question
-    $(this).find(".nextButton").on("click", function () {
+    $(this).find(".next-button").on("click", function () {
         if (!quizOver) {
 
             value = $("input[type='radio']:checked").val();
