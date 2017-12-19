@@ -1,24 +1,24 @@
-
+//correctAnswer= number of place in array (exmp, 0) + 1 (exmp,0 +1 =1) add the word 'option' before (exmp, 'option'+1= 'option1')
 var questions = [{
     question: "What is the population of Brazil?",
     choices: ["145 million", "199 million", "182 million"],
-    correctAnswer: 1
+    correctAnswer: 'option2'
 }, {
     question: "What is 27*14?",
     choices: ["485", "634", "408"],
-    correctAnswer: 2
+    correctAnswer: 'option3'
 }, {
     question: "What is the busiest train station in the world?",
     choices: ["Grand Central, NY", "Shibuya, Tokyo", "Beijing Central, Chine"],
-    correctAnswer: 1
+    correctAnswer: 'option2'
 }, {
     question: "What is the longest river?",
     choices: ["Nile", "Amazon", "Mississippi"],
-    correctAnswer: 0
+    correctAnswer: 'option1'
 }, {
     question: "What is the busiest tube station in the London?",
     choices: ["Waterloo", "Baker Street", "Kings Cross"],
-    correctAnswer: 0
+    correctAnswer: 'option1'
 }];
 
 var currentQuestion = 0;
@@ -38,33 +38,39 @@ $(document).ready(function () {
             value = $("input[type='radio']:checked").val();
 
             if (value == undefined) {
-                $(document).find(".quizMessage").text("Please select an answer");
-                $(document).find(".quizMessage").show();
+              //No answer selected
+              $(document).find(".next-button").addClass('n-a');
+              //$('#element').tooltip('show')
+                //$(document).find(".quizMessage").text("Please select an answer");
+                //$(document).find(".quizMessage").show();
             } else {
                 // TODO: Remove any message -> not sure if this is efficient to call this each time....
-                $(document).find(".quizMessage").hide();
-
+                //$(document).find(".quizMessage").hide();
+                $(document).find(".next-button").removeClass('n-a');
                 if (value == questions[currentQuestion].correctAnswer) {
                     correctAnswers++;
+                    console.log(correctAnswers);
                 }
 
                 currentQuestion++; // Since we have already displayed the first question on DOM ready
                 if (currentQuestion < questions.length) {
                     displayCurrentQuestion();
+                    $(document).find(".page").text((currentQuestion+1)+'/'+questions.length);
                 } else {
                     displayScore();
                     //                    $(document).find(".nextButton").toggle();
                     //                    $(document).find(".playAgainButton").toggle();
                     // Change the text in the next button to ask if user wants to play again
-                    $(document).find(".nextButton").text("Play Again?");
+                    $(document).find(".next-button").text("Play Again?");
                     quizOver = true;
                 }
             }
         } else { // quiz is over and clicked the next button (which now displays 'Play Again?'
             quizOver = false;
-            $(document).find(".nextButton").text("Next Question");
+            $(document).find(".next-button").text("Next");
             resetQuiz();
             displayCurrentQuestion();
+            $(document).find(".page").text('1/'+questions.length);
             hideScore();
         }
     });
@@ -73,8 +79,7 @@ $(document).ready(function () {
 
 // This displays the current question AND the choices
 function displayCurrentQuestion() {
-
-    console.log("In display current Question");
+    //console.log("In display current Question");
 
     var question = questions[currentQuestion].question;
     var questionClass = $(document).find("h2.question");
@@ -88,9 +93,11 @@ function displayCurrentQuestion() {
     var choice;
     for (i = 0; i < numChoices; i++) {
         choice = questions[currentQuestion].choices[i];
-        var list = $(document).find(".choice-"+(i+1)+' a');
-        $(list).text(choice);
+        var selectorInput="input[value=option"+(i+1)+']';
+        $(document).find(selectorInput).closest('label').children('p').text(choice);
     }
+    //uncheck all choices
+    clearForm();
 }
 
 function resetQuiz() {
@@ -100,10 +107,13 @@ function resetQuiz() {
 }
 
 function displayScore() {
-    $(document).find(".result").text("You scored: " + correctAnswers + " out of: " + questions.length);
-    $(document).find(".result").show();
+    $(document).find(".modal-body").text("You scored: " + correctAnswers + " out of: " + questions.length);
+    $('#myModal').modal('show');
 }
 
 function hideScore() {
-    $(document).find(".result").hide();
+  $('#myModal').modal('hide');
 }
+function clearForm(){
+  $('input[type="radio"]').prop( "checked", false );
+ }

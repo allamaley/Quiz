@@ -25,7 +25,26 @@
 
 </head>
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title" id="exampleModalLabel">Your score is...</h5>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--end of Modal -->
+
 <div class="container-fluid">
+
   <div class="row row-header align-items-center justify-content-center">
     <div class="col col-auto">
       <h2 class="question"></h2>
@@ -38,19 +57,19 @@
       <div class="form-check">
         <label class="form-check-label">
           <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1">
-          Option one
+          <p>Option one</p>
         </label>
       </div>
       <div class="form-check">
       <label class="form-check-label">
           <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-          Option two
+          <p>Option two</p>
         </label>
       </div>
       <div class="form-check">
       <label class="form-check-label">
           <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
-          Option three
+          <p>Option three</p>
         </label>
       </div>
     </fieldset>
@@ -58,10 +77,10 @@
   </div>
   <div class="row row-f align-items-end text-center">
     <div class="col">
-      <button type="submit" class="btn n-a">Back</button>
+      <!--<button type="submit" class="btn n-a">Back</button>-->
     </div>
-    <div class="col d-block" style='padding-top:20px;'>
-      1/7
+    <div class="col page d-block" style='padding-top:20px;'>
+      1/5
     </div>
     <div class="col">
       <button type="submit" class="btn next-button">Next</button>
