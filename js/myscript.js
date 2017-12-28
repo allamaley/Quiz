@@ -4,8 +4,8 @@ var questions = [{
     choices: ["145 million", "199 million", "182 million"],
     correctAnswer: 'option2'
 }, {
-    question: "What is 27*14?",
-    choices: ["485", "634", "408"],
+    question: "What is the capital of France?",
+    choices: ["London", "Chicago", "Paris"],
     correctAnswer: 'option3'
 }, {
     question: "What is the busiest train station in the world?",
@@ -40,11 +40,14 @@ $(document).ready(function () {
       }
       else{
         $(document).find("input[value!='"+$(this).val()+"']").closest('label').addClass('not-checked');
-        $(document).find("input[value!='"+questions[currentQuestion].correctAnswer+"']").closest('label').addClass('correct');
-        $(document).find("input[value!='"+questions[currentQuestion].correctAnswer+"']").closest('label').children('i.fa-thumbs-o-up').css("display","inline-block");
+        
+        $(document).find("input[value='"+questions[currentQuestion].correctAnswer+"']").closest('label').addClass('correct');
+        $(document).find("input[value='"+questions[currentQuestion].correctAnswer+"']").closest('label').children('i.fa-thumbs-o-up').css("display","inline-block");
+
         $(this).closest('label').removeClass('correct').addClass('incorrect');
         $(this).closest('label').children('i.fa-thumbs-o-up').css("display","none");
         $(this).closest('label').children('i.fa-thumbs-o-down').css("display","inline-block");
+
         $(document).find("input[type=radio]").attr('disabled', true);
       }
     });
