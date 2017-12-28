@@ -15,7 +15,7 @@ var questions = [{
     question: "What is the longest river?",
     choices: ["Nile", "Amazon", "Mississippi"],
     correctAnswer: 'option1'
-}, {
+},  {
     question: "What is the busiest tube station in the London?",
     choices: ["Waterloo", "Baker Street", "Kings Cross"],
     correctAnswer: 'option1'
@@ -26,13 +26,34 @@ var correctAnswers = 0;
 var quizOver = false;
 
 $(document).ready(function () {
-
     // Display the first question
     displayCurrentQuestion();
-    $(this).find(".quizMessage").hide();
-
+    //$(this).find(".quizMessage").hide();
+    //show if the answer was correct or incorrect
+    $("input[type='radio']").on("click", function () {
+      value = $(this).val();
+      if (value == questions[currentQuestion].correctAnswer) {
+          $(this).closest('label').addClass('correct');
+          $(this).closest('label').children('i.fa-thumbs-o-up').css("display","inline-block");
+          $(document).find("input[value!='"+$(this).val()+"']").closest('label').addClass('not-checked');
+          $(document).find("input[type=radio]").attr('disabled', true);
+      }
+      else{
+        $(document).find("input[value!='"+$(this).val()+"']").closest('label').addClass('not-checked');
+        $(document).find("input[value!='"+questions[currentQuestion].correctAnswer+"']").closest('label').addClass('correct');
+        $(document).find("input[value!='"+questions[currentQuestion].correctAnswer+"']").closest('label').children('i.fa-thumbs-o-up').css("display","inline-block");
+        $(this).closest('label').removeClass('correct').addClass('incorrect');
+        $(this).closest('label').children('i.fa-thumbs-o-up').css("display","none");
+        $(this).closest('label').children('i.fa-thumbs-o-down').css("display","inline-block");
+        $(document).find("input[type=radio]").attr('disabled', true);
+      }
+    });
     // On clicking next, display the next question
     $(this).find(".next-button").on("click", function () {
+      $("input[type=radio]").attr('disabled', false);
+      $(document).find("label").removeClass('correct').removeClass('incorrect').removeClass('not-checked');
+      $(document).find("label").children('i.fa-thumbs-o-up').css("display","none");
+      $(document).find("label").children('i.fa-thumbs-o-down').css("display","none");
         if (!quizOver) {
 
             value = $("input[type='radio']:checked").val();
@@ -107,8 +128,25 @@ function resetQuiz() {
 }
 
 function displayScore() {
-    $(document).find(".modal-body").text("You scored: " + correctAnswers + " out of: " + questions.length);
+    $(document).find(".modal-body p").text("You scored: " + correctAnswers + " out of " + questions.length);
     $('#myModal').modal('show');
+    //$('.circle').circleProgress('value', correctAnswers/questions.length);
+    $('.circle').circleProgress(
+
+      {
+        startAngle: -1.55,
+       	size: 200,
+        thickness:100,
+           value: correctAnswers/questions.length,
+           fill: {
+       		//color: '#293f50'
+          image: "http://i0.kym-cdn.com/photos/images/original/000/170/408/tumblr_lq41f5GxHb1qbaxlqo1_400.gif"
+       	}
+        }
+
+    ).on('circle-animation-progress', function(event, progress, stepValue) {
+     //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1));
+    });
 }
 
 function hideScore() {
@@ -116,4 +154,23 @@ function hideScore() {
 }
 function clearForm(){
   $('input[type="radio"]').prop( "checked", false );
+ }
+
+
+
+
+
+
+ /**
+ *Exampe from https://kottenator.github.io/jquery-circle-progress/
+ */
+ var progressBarOptions = {
+ 	startAngle: -1.55,
+ 	size: 200,
+  thickness:100,
+     value: correctAnswers/questions.length,
+     fill: {
+ 		//color: '#293f50'
+    image: "http://i0.kym-cdn.com/photos/images/original/000/170/408/tumblr_lq41f5GxHb1qbaxlqo1_400.gif"
+ 	}
  }

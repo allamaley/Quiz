@@ -17,6 +17,8 @@
   <!--CDN versions of jQuery and Popper.js -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <!--circle plugin js-->
+  <script src="js/jquery-circle-progress/dist/circle-progress.js"></script>
 
   <!--Bootstrap js-->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
@@ -29,11 +31,14 @@
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header text-center">
-            <h5 class="modal-title" id="exampleModalLabel">Your score is...</h5>
+          <div class="modal-header">
+            <h5 class="modal-title text-center" style="margin: 0 auto;" id="exampleModalLabel">Your score is...</h5>
           </div>
           <div class="modal-body">
-            ...
+            <p class="text-center"></p>
+            <div class="circle" id="circle-a">
+              <strong></strong>
+            </div>
           </div>
           <div class="modal-footer justify-content-center">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -57,18 +62,24 @@
       <div class="form-check">
         <label class="form-check-label">
           <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1">
+          <i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true" name="close-thin" style='display: none;'></i>
+          <i class="fa fa-thumbs-o-up fa-pulse fa-2x" aria-hidden="true" name="arrow-thin" style='display: none;'></i>
           <p>Option one</p>
         </label>
       </div>
       <div class="form-check">
       <label class="form-check-label">
           <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          <i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true" name="close-thin" style='display: none;'></i>
+          <i class="fa fa-thumbs-o-up fa-pulse fa-2x" aria-hidden="true" name="arrow-thin" style='display: none;'></i>
           <p>Option two</p>
         </label>
       </div>
       <div class="form-check">
       <label class="form-check-label">
           <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+          <i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true" name="close-thin" style='display: none;'></i>
+          <i class="fa fa-thumbs-o-up fa-pulse fa-2x" aria-hidden="true" name="arrow-thin" style='display: none;'></i>
           <p>Option three</p>
         </label>
       </div>
