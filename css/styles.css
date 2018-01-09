@@ -3,7 +3,6 @@
             box-sizing: border-box;
 }
 body{
-
   color:#3e3e40;
   font-family: 'Oxygen', sans-serif;
   background: #cbe2c1;
@@ -28,7 +27,12 @@ body{
 }
 input[type="radio"] {
     display:none;
+    background-color:inherit;
 }
+/*input[type="radio"]:checked ~ p,label > input[type="radio"]:checked {
+  background-color: #bebfc1;
+}
+*/
 .row-a .col label{
   cursor: pointer;
   display:block;
@@ -36,18 +40,23 @@ input[type="radio"] {
   text-decoration: none;
   height: 100%;
   width:100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-
   -webkit-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+  padding-left: 0;
 }
 .row-a label:hover{
 background-color: #bebfc1;
 
 }
-
+.row-a .col label p{
+  height: 100%;
+  width:100%;
+  display:inline-block;
+  margin:0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 .row-f{
   height:10vh;
   color:#e9eaea;
@@ -81,12 +90,111 @@ background-color: #bebfc1;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
-.btn:hover{
-  border-color: transparent;
+.btn:hover,.btn:active,.btn-secondary:focus{
+  border-color: transparent !important;
+  background: #293f50 !important;
 }
-
+.btn:focus{
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
 .n-a{
 cursor: not-allowed;}
-
-
+.modal-header, .modal-body{
+  color:#3e3e40;
+  background: #cbe2c1;
+   background: -webkit-gradient(linear, left top, right top, from(#f6f1d3), to(#a1d3b0));
+   background: linear-gradient(to right, #f6f1d3, #a1d3b0);
+   border-bottom: none;
 }
+.modal-footer{
+  color:#e9eaea;
+  background: #293f50;
+  border-top: none;
+}
+
+
+.circle {
+	  width: 200px;
+    height:200px;
+    margin-left: 135px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+	  vertical-align: top;
+}
+.circle	strong {
+		position: absolute;
+		top: 70px;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		/*line-height: 45px;
+		font-size: 43px;
+    */
+	}
+
+
+/*Styles for correct and incorrect answers*/
+.row-a .col label.incorrect{
+  background-color: transparent;
+  border: 2px solid rgb(246, 90, 91);
+      -webkit-transition: width 250ms ease-out, height 250ms ease-out 250ms;
+      transition: width 250ms ease-out, height 250ms ease-out 250ms;
+}
+
+label.incorrect i{
+  color: rgb(246, 90, 91);
+  display: inline-block;
+  position: absolute;
+  left: 1.5rem;
+  top: 25%;
+}
+.row-a .col label.correct{
+    background-color: transparent;
+    border: 2px solid rgb(52, 179, 160);
+      -webkit-transition: width 0ms ease-out, height 0ms ease-out 0ms;
+      transition: width 0ms ease-out, height 0ms ease-out 0ms;
+}
+label.correct i{
+    color: rgb(52, 179, 160);
+    display: inline-block;
+    position: absolute;
+    left: 1.5rem;
+    top: 25%;
+}
+.fa-pulse {
+  display: inline-block;
+  -webkit-animation: pulse 2s infinite linear;
+  animation: pulse 2s infinite linear; }
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@keyframes pulse {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+.row-a .col label.not-checked{
+    opacity: 0.4;
+          -webkit-transition: width 0ms ease-out, height 0ms ease-out 0ms;
+          transition: width 0ms ease-out, height 0ms ease-out 0ms;
+}
+.row-a .col label.not-checked:not(.correct):hover {
+    background-color: #e9eaea;
+}
+.row-a .col label.incorrect:hover,.row-a .col label.correct:hover,.row-a .col label.not-checked:hover{
+  cursor: auto;
+  background-color: transparent;
+}
+/*input[type="radio"]:checked ~ p,label > input[type="radio"]:checked {
+  background-color: #bebfc1;
+}
+*/
